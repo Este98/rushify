@@ -198,18 +198,24 @@
             </div>
             <div class="row">
                 <div class="info col-2">
+                    <p class="overlay-only hidden">Overlay image:</p>
+                </div>
+                <div class="info col-7">
+                    <input class="input overlay-only hidden" type="text" id="image-overlay-url">
+                </div>
+                <div class="info col-3">
+                    <input type="file" accept="image/*" id="upload-overlay-img" class="d-none" data-max-size="2000">
+                    <button class="input btn btn-primary overlay-only hidden" id="upload-overlay-btn">Upload</button>
+                </div>
+                <div class="info col-2">
                     <p>Image:</p>
-                    <p class="overlay-only">Overlay image:</p>
                 </div>
                 <div class="info col-7">
                     <input class="input" type="text" id="image-url">
-                    <input class="input overlay-only" type="text" id="image-overlay-url">
                 </div>
                 <div class="info col-3">
                     <input type="file" accept="image/*" id="upload-img" class="d-none" data-max-size="2000">
                     <button class="input btn btn-primary" id="upload-btn">Upload</button>
-                    <input type="file" accept="image/*" id="upload-overlay-img" class="d-none" data-max-size="2000">
-                    <button class="input btn btn-primary overlay-only" id="upload-overlay-btn">Upload</button>
                 </div>
             </div>
             <div class="row">
