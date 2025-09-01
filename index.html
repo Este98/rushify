@@ -79,7 +79,7 @@
                 <!-- Card name and type -->
                 <div class="col-6 info">
                     Card name
-                    <input class="input" type="text" maxlength="50" placeholder="Card name" id="card-name">
+                    <input class="input" type="text" maxlength="50" placeholder="Card name" value="Summonned Skull" id="card-name">
                 </div>
                 <div class="col-6 info">
                     Card type
@@ -107,7 +107,8 @@
                 <!-- Type and Attribute -->
                 <div class="col-6 info">
                     Monster type
-                    <input class="input" type="text" maxlength="50" placeholder="Monster type" id="monster-type">
+                    <input class="input" type="text" maxlength="50" placeholder="Monster type" value="Fiend/Normal"
+                        id="monster-type">
                 </div>
                 <div class="col-6 info">
                     Attribute
@@ -147,17 +148,19 @@
                         Level:
                     </div>
                     <div class="col-6">
-                        <input type="number" class="input" max="12" min="1" placeholder="Level" value="1" id="level">
+                        <input type="number" class="input" max="12" min="1" placeholder="Level" value="6" id="level">
                     </div>
                 </div>
                 <div class="col-6 info">
                     <div class="col-3 text-right info">ATK / </div>
                     <div class="col-3">
-                        <input class="input atk" type="number" max="99999" min="0" placeholder="ATK" id="atk">
+                        <input class="input atk" type="number" max="99999" min="0" placeholder="ATK" value="2500"
+                            id="atk">
                     </div>
                     <div class="col-3 text-right info">DEF / </div>
                     <div class="col-3">
-                        <input class="input def" type="number" max="99999" min="0" placeholder="DEF" id="def">
+                        <input class="input def" type="number" max="99999" min="0" placeholder="DEF" value="1200"
+                            id="def">
                     </div>
                 </div>
             </div>
@@ -172,8 +175,8 @@
                     <div class="col-2 info">Maximum</div> <br>
                     <div class="col-5 text-right info maximum-only">Maximum ATK: </div>
                     <div class="col-4">
-                        <input class="input maximum-only" disabled type="number" max="99999" min="0" placeholder="Maximum ATK"
-                            id="maximum-atk">
+                        <input class="input maximum-only" disabled type="number" max="99999" min="0"
+                            placeholder="Maximum ATK" id="maximum-atk">
                     </div>
                 </div>
                 <!-- Rarity -->
@@ -207,6 +210,9 @@
                     <input type="file" accept="image/*" id="upload-overlay-img" class="d-none" data-max-size="2000">
                     <button class="input btn btn-primary overlay-only" id="upload-overlay-btn">Upload</button>
                 </div>
+                <div class="row">
+                    <p class="note overlay-only">Square images with transparent background are recommended.</p>
+                </div>
                 <div class="info col-2">
                     <p>Image:</p>
                 </div>
@@ -217,9 +223,6 @@
                     <input type="file" accept="image/*" id="upload-img" class="d-none" data-max-size="2000">
                     <button class="input btn btn-primary" id="upload-btn">Upload</button>
                 </div>
-            </div>
-            <div class="row">
-                <p class="note">Square images with transparent background are recommended.</p>
             </div>
             <div class="row">
                 <div class="info col-12">
