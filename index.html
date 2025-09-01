@@ -98,7 +98,7 @@
             <div class="row">
                 <div class="col-6 info">
                     <div class="input">
-                        <input type="checkbox" value="legend"> Legend
+                        <input type="checkbox" id="legend" checked> Legend
                     </div>
                 </div>
             </div>
@@ -169,10 +169,10 @@
                             <input type="checkbox" value="maximum" id="maximum">
                         </div>
                     </div>
-                    <div class="col-2 info">Maximum</div>
-                    <div class="col-5 text-right info">Maximum ATK: </div>
+                    <div class="col-2 info">Maximum</div> <br>
+                    <div class="col-5 text-right info maximum-only">Maximum ATK: </div>
                     <div class="col-4">
-                        <input class="input" disabled type="number" max="99999" min="0" placeholder="Maximum ATK"
+                        <input class="input maximum-only" disabled type="number" max="99999" min="0" placeholder="Maximum ATK"
                             id="maximum-atk">
                     </div>
                 </div>
@@ -198,6 +198,16 @@
             </div>
             <div class="row">
                 <div class="info col-2">
+                    <p class="overlay-only">Overlay image:</p>
+                </div>
+                <div class="info col-7">
+                    <input class="input overlay-only" type="text" id="image-overlay-url">
+                </div>
+                <div class="info col-3">
+                    <input type="file" accept="image/*" id="upload-overlay-img" class="d-none" data-max-size="2000">
+                    <button class="input btn btn-primary overlay-only" id="upload-overlay-btn">Upload</button>
+                </div>
+                <div class="info col-2">
                     <p>Image:</p>
                 </div>
                 <div class="info col-7">
@@ -206,16 +216,6 @@
                 <div class="info col-3">
                     <input type="file" accept="image/*" id="upload-img" class="d-none" data-max-size="2000">
                     <button class="input btn btn-primary" id="upload-btn">Upload</button>
-                </div>
-                <div class="info col-2">
-                    <p class="overlay-only d-none">Overlay image:</p>
-                </div>
-                <div class="info col-7">
-                    <input class="input overlay-only d-none" type="text" id="image-overlay-url">
-                </div>
-                <div class="info col-3">
-                    <input type="file" accept="image/*" id="upload-overlay-img" class="d-none" data-max-size="2000">
-                    <button class="input btn btn-primary overlay-only d-none" id="upload-overlay-btn">Upload</button>
                 </div>
             </div>
             <div class="row">

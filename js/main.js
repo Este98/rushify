@@ -13,6 +13,7 @@ $(document).ready(function(){
     $('.progress').hide();
     $('#progress-text').hide();
     $('#card-text').change();
+    $(".overlay-only").hide();
 
     let cardTypeSelected = $('#ctype option:selected').val();
     if (cardTypeSelected == 'Normal'){
