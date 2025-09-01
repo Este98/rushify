@@ -126,10 +126,10 @@ header{
 .card-image,
 .card-image-2,
 .card-image-3{
-    top: 10%;
-    left: 0%;
+    top: 10.2%;
+    left: 5%;
     width: 90%;
-    max-height: 90%;
+    max-height: 100%;
 }
 
 .card-image-overlay,
@@ -286,7 +286,7 @@ header{
 .card-def-3{
     font-family: CardStat;
     font-size: 240%;
-    top: 66.8%;
+    top: 66.5%;
     color: white;
     z-index: 3;
     text-shadow: 0px 0px 7px #000000, 0px 0px 7px #000000, 0px 0px 7px #000000, 0px 0px 7px #000000, 0px 0px 7px #000000;
@@ -295,14 +295,14 @@ header{
 .card-atk,
 .card-atk-2,
 .card-atk-3{
-    right: 48.5%;
+    right: 49.6%;
 }
 
 .card-def,
 .card-def-2,
 .card-def-3,
 .card-max-atk{
-    right: 18%;
+    right: 20%;
 }
 
 .card-lore,
