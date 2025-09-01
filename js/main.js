@@ -15,7 +15,7 @@ $(document).ready(function () {
     $('#card-text').change();
     $(".overlay-only").hide();
 
-    // ========= Helpers stabilité aperçu/export =========
+   /* // ========= Helpers stabilité aperçu/export =========
     async function waitForFonts() {
         if (document.fonts && document.fonts.ready) {
             try { await document.fonts.ready; } catch (e) { }
@@ -28,7 +28,7 @@ $(document).ready(function () {
         await Promise.all(imgs.map(img => img.complete ? Promise.resolve()
             : new Promise(res => { img.onload = img.onerror = () => res(); })));
     }
-    // ===================================================
+    // ===================================================*/
 
 
     let cardTypeSelected = $('#ctype option:selected').val();
