@@ -1,47 +1,48 @@
 @charset "utf-8";
 
-*{
-	box-sizing: border-box;
-	--bs-gutter-x: 0rem !important;
+* {
+    box-sizing: border-box;
+    --bs-gutter-x: 0rem !important;
 }
 
-body{
-	background-color: rgb(43, 43, 43);
-	color: white;
+body {
+    background-color: rgb(43, 43, 43);
+    color: white;
 }
 
-.hidden{
+.hidden {
     display: none;
 }
 
-header{
+header {
     padding: 30px;
 }
 
-.banner{
+.banner {
     font-family: Interceptor;
-    text-align:center;
+    text-align: center;
     top: 50%;
     position: relative;
 }
 
 .banner-top,
-.banner-bottom{
+.banner-bottom {
     position: absolute;
     width: 100%;
     font-size: 3vw;
     -webkit-text-fill-color: transparent;
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,241,194,1) 12%, rgba(253,220,49,1) 33%, rgba(253,220,49,1) 54%, rgba(253,172,49,1) 56%, rgba(253,220,49,1) 58%, rgba(253,172,49,1) 61%, rgba(253,220,49,1) 64%, rgba(253,172,49,1) 69%, rgba(253,220,49,1) 63%, rgba(253,172,49,1) 78%, rgba(253,172,49,1) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 241, 194, 1) 12%, rgba(253, 220, 49, 1) 33%, rgba(253, 220, 49, 1) 54%, rgba(253, 172, 49, 1) 56%, rgba(253, 220, 49, 1) 58%, rgba(253, 172, 49, 1) 61%, rgba(253, 220, 49, 1) 64%, rgba(253, 172, 49, 1) 69%, rgba(253, 220, 49, 1) 63%, rgba(253, 172, 49, 1) 78%, rgba(253, 172, 49, 1) 100%);
     -webkit-background-clip: text;
 }
-.banner-bottom{
+
+.banner-bottom {
     left: 5px;
-    top:5px;
+    top: 5px;
     background: black;
     -webkit-background-clip: text;
 }
 
-.text-right{
+.text-right {
     text-align: right;
 }
 
@@ -80,25 +81,61 @@ header{
     src: url("../font/Interceptor Italic.otf") format("opentype");
 }
 
-[class*="col-"]{
-	float: left;
-	width: 100%;
+[class*="col-"] {
+    float: left;
+    width: 100%;
 }
 
 @media only screen and (min-width: 1024px) {
-	/* For desktop: */
-	.col-1 {width: 8.33%;}
-	.col-2 {width: 16.66%;}
-	.col-3 {width: 25%;}
-	.col-4 {width: 33.33%;}
-	.col-5 {width: 41.66%;}
-	.col-6 {width: 50%;}
-	.col-7 {width: 58.33%;}
-	.col-8 {width: 66.66%;}
-	.col-9 {width: 75%;}
-	.col-10 {width: 83.33%;}
-	.col-11 {width: 91.66%;}
-	.col-12 {width: 100%;}
+
+    /* For desktop: */
+    .col-1 {
+        width: 8.33%;
+    }
+
+    .col-2 {
+        width: 16.66%;
+    }
+
+    .col-3 {
+        width: 25%;
+    }
+
+    .col-4 {
+        width: 33.33%;
+    }
+
+    .col-5 {
+        width: 41.66%;
+    }
+
+    .col-6 {
+        width: 50%;
+    }
+
+    .col-7 {
+        width: 58.33%;
+    }
+
+    .col-8 {
+        width: 66.66%;
+    }
+
+    .col-9 {
+        width: 75%;
+    }
+
+    .col-10 {
+        width: 83.33%;
+    }
+
+    .col-11 {
+        width: 91.66%;
+    }
+
+    .col-12 {
+        width: 100%;
+    }
 }
 
 .row::after {
@@ -107,25 +144,25 @@ header{
     display: table;
 }
 
-[class*="card-"]{
+[class*="card-"] {
     position: absolute;
 }
 
-.display{
+.display {
     position: relative;
 }
 
 .display-card,
 .display-card-2,
-.display-card-3{
+.display-card-3 {
     position: relative;
     width: fit-content;
-	color: black;
+    color: black;
 }
 
 .card-image,
 .card-image-2,
-.card-image-3{
+.card-image-3 {
     top: 10.2%;
     left: 5%;
     width: 90%;
@@ -134,7 +171,7 @@ header{
 
 .card-image-overlay,
 .card-image-overlay-2,
-.card-image-overlay-3{
+.card-image-overlay-3 {
     top: 10%;
     left: 0%;
     width: 100%;
@@ -143,12 +180,12 @@ header{
 }
 
 .note {
-    font-style:italic;
+    font-style: italic;
 }
 
 .card-frame,
 .card-frame-2,
-.card-frame-3{
+.card-frame-3 {
     position: relative;
     top: 0px;
     left: 0px;
@@ -156,7 +193,7 @@ header{
 
 .card-frame-bottom,
 .card-frame-bottom-2,
-.card-frame-bottom-3{
+.card-frame-bottom-3 {
     z-index: 2;
     position: absolute;
     bottom: 0%;
@@ -164,7 +201,7 @@ header{
 
 .card-attribute,
 .card-attribute-2,
-.card-attribute-3{
+.card-attribute-3 {
     top: 3.3%;
     left: 81.1%;
     width: 14.3%;
@@ -178,7 +215,7 @@ header{
 }
 
 .card-image-1,
-.card-image-overlay-1{
+.card-image-overlay-1 {
     clip-path: inset(0% 67% 0% 0%);
     transform: translate(0, 0);
     width: 303%;
@@ -211,10 +248,13 @@ header{
 
 .card-name,
 .card-name-2,
-.card-name-3{
+.card-name-3 {
     top: -0.5%;
     left: 3%;
-    font-family: CardName;
+    font-family: CardName !important;;
+    font-variant-ligatures: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     white-space: nowrap;
     width: 640px;
     padding: 0% 2% 0% 2%;
@@ -223,7 +263,7 @@ header{
 
 .card-name-1,
 .card-name-1-2,
-.card-name-1-3{
+.card-name-1-3 {
     font-size: 600%;
     text-align: left;
     left: 20px;
@@ -231,14 +271,14 @@ header{
 
 .card-stats,
 .card-stats-2,
-.card-stats-3{
+.card-stats-3 {
     top: 66.5%;
     left: 5%;
     width: inherit;
     z-index: 2;
 }
 
-.card-maximum{
+.card-maximum {
     top: 61.6%;
     left: 11.5%;
     width: inherit;
@@ -247,7 +287,7 @@ header{
 
 .card-level,
 .card-level-2,
-.card-level-3{
+.card-level-3 {
     top: 59.8%;
     left: 6.1%;
     text-align: center;
@@ -257,7 +297,7 @@ header{
 
 .card-level p,
 .card-level-2 p,
-.card-level-3 p{
+.card-level-3 p {
     font-family: CardStat;
     text-align: center;
     position: absolute;
@@ -269,7 +309,7 @@ header{
     text-shadow: 0px 0px 7px #000000, 0px 0px 7px #000000, 0px 0px 7px #000000, 0px 0px 7px #000000, 0px 0px 7px #000000;
 }
 
-.card-max-atk{
+.card-max-atk {
     font-family: CardStat;
     font-size: 240%;
     top: 61.6%;
@@ -283,7 +323,7 @@ header{
 .card-atk-2,
 .card-def-2,
 .card-atk-3,
-.card-def-3{
+.card-def-3 {
     font-family: CardStat;
     font-size: 240%;
     top: 66.5%;
@@ -294,15 +334,15 @@ header{
 
 .card-atk,
 .card-atk-2,
-.card-atk-3{
-    right: 49.6%;
+.card-atk-3 {
+    right: 48.5%;
 }
 
 .card-def,
 .card-def-2,
 .card-def-3,
-.card-max-atk{
-    right: 20%;
+.card-max-atk {
+    right: 19%;
 }
 
 .card-lore,
@@ -310,7 +350,7 @@ header{
 .card-lore-2,
 .card-effect-2,
 .card-lore-3,
-.card-effect-3{
+.card-effect-3 {
     z-index: 4;
     font-size: auto;
     margin: 6%;
@@ -323,14 +363,14 @@ header{
 
 .card-lore.normal-monster-only,
 .card-lore-2.normal-monster-only,
-.card-lore-3.normal-monster-only{
+.card-lore-3.normal-monster-only {
     font-family: CardLore;
     width: 720px;
 }
 
 .card-effect.effect-monster-only,
 .card-effect-2.effect-monster-only,
-.card-effect-3.effect-monster-only{
+.card-effect-3.effect-monster-only {
     font-family: CardEffect;
 }
 
@@ -339,46 +379,58 @@ header{
 .lore-2,
 .effect-2,
 .lore-3,
-.effect-3{
+.effect-3 {
     height: fit-content;
+
 }
+
+.card-lore,
+.lore {
+    text-align: left;
+}
+
+.card-lore *,
+.lore * {
+    text-align: left !important;
+}
+
 
 .card-type-1::before,
 .card-type-1-2::before,
-.card-type-1-3::before{
+.card-type-1-3::before {
     content: "[";
 }
 
 .card-type-1::after,
 .card-type-1-2::after,
-.card-type-1-3::after{
+.card-type-1-3::after {
     content: "]";
 }
 
 .card-type,
 .card-type-2,
-.card-type-3{
+.card-type-3 {
     font-family: CardType;
     font-size: 170%;
     top: 71.8%;
     left: 7%;
 }
 
-.card-st-type.left-28{
+.card-st-type.left-28 {
     width: 4.5%;
     top: 72.3%;
     left: 28%;
     z-index: 100;
 }
 
-.card-st-type.left-27{
+.card-st-type.left-27 {
     width: 4.5%;
     top: 72.3%;
     left: 27%;
     z-index: 100;
 }
 
-.card-legend{
+.card-legend {
     top: 10.5%;
     left: 5.5%;
     width: 25.6%;
@@ -387,7 +439,7 @@ header{
 
 .card-creator,
 .card-creator-2,
-.card-creator-3{
+.card-creator-3 {
     font-family: CardCreator;
     color: white;
     top: 94%;
@@ -399,7 +451,7 @@ header{
 
 .card-creator::before,
 .card-creator-2::before,
-.card-creator-3::before{
+.card-creator-3::before {
     content: '© ';
     font-family: CardCreator;
     color: white;
@@ -409,7 +461,7 @@ header{
 
 .card-set-number,
 .card-set-number-2,
-.card-set-number-3{
+.card-set-number-3 {
     text-align: right;
     font-weight: bold;
     font-family: "MS UI Gothic";
@@ -421,80 +473,80 @@ header{
     z-index: 4;
 }
 
-.info-input{
+.info-input {
     padding: 50px;
 }
 
-.info{
+.info {
     height: 100%;
     padding: 10px;
 }
 
-.input{
+.input {
     height: 100%;
     width: 100%;
     padding: 10px;
-	color: white;
-	background-color: rgb(43, 43, 43);
+    color: white;
+    background-color: rgb(43, 43, 43);
 }
 
-.input-3{
+.input-3 {
     height: 100%;
     width: 20%;
     padding: 10px;
-	color: white;
-	background-color: rgb(43, 43, 43);
+    color: white;
+    background-color: rgb(43, 43, 43);
 }
 
-textarea.input{
+textarea.input {
     height: 200px;
 }
 
-.padding-5{
+.padding-5 {
     padding: 0px 5px 0px 5px;
 }
 
-.rarity-rush{
+.rarity-rush {
     color: #e5e619 !important;
 }
 
-.info h2{
+.info h2 {
     font-size: 110%;
     font-weight: normal;
 }
 
 .card-type-1,
 .card-type-1-2,
-.card-type-1-3{
+.card-type-1-3 {
     z-index: 4;
-    position:relative !important;
+    position: relative !important;
     display: inline;
     padding-right: 0px;
 }
 
 .card-type-1.p40,
 .card-type-1-2.p40,
-.card-type-1-3.p40{
+.card-type-1-3.p40 {
     z-index: 4;
     padding-right: 40px;
 }
 
 .card-type-1.p50,
 .card-type-1-2.p50,
-.card-type-1-3.p50{
+.card-type-1-3.p50 {
     z-index: 4;
     padding-right: 50px;
 }
 
-.card-type-1.p40:after{
+.card-type-1.p40:after {
     padding-left: 40px;
 }
 
-.card-type-1.p50:after{
+.card-type-1.p50:after {
     padding-left: 40px;
 }
 
 .card-type-1.white-text,
-.card-name-1.white-text{
+.card-name-1.white-text {
     color: white;
 }

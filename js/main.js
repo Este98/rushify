@@ -1,6 +1,6 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
-	$('#card-text').trumbowyg();
+    $('#card-text').trumbowyg();
 
     var monsterOnly = $('.monster-only');
     var stOnly = $('.st-only');
@@ -15,10 +15,26 @@ $(document).ready(function(){
     $('#card-text').change();
     $(".overlay-only").hide();
 
+    // ========= Helpers stabilité aperçu/export =========
+    async function waitForFonts() {
+        if (document.fonts && document.fonts.ready) {
+            try { await document.fonts.ready; } catch (e) { }
+        }
+    }
+    async function waitForImages() {
+        const el = document.getElementById('display-card');
+        if (!el) return;
+        const imgs = Array.from(el.querySelectorAll('img')).filter(i => i && i.src);
+        await Promise.all(imgs.map(img => img.complete ? Promise.resolve()
+            : new Promise(res => { img.onload = img.onerror = () => res(); })));
+    }
+    // ===================================================
+
+
     let cardTypeSelected = $('#ctype option:selected').val();
-    if (cardTypeSelected == 'Normal'){
+    if (cardTypeSelected == 'Normal') {
         $('.lore').css('font-family', 'CardLore');
-    } else{
+    } else {
         $('.lore').css('font-family', 'CardEffect');
     }
 
@@ -29,19 +45,19 @@ $(document).ready(function(){
     squeezeToFit($('.card-name-1'), $('.card-name'));
     resizeToFit($('.lore'), $('.card-lore'));
 
-    $('.input').change(function(){
+    $('.input').change(function () {
         let cardName = $('#card-name').val();
         //Change the card name
-        if (cardName != ""){
+        if (cardName != "") {
             $('.card-name-1').html(cardName);
             squeezeToFit($('.card-name-1'), $('.card-name'));
         }
         //Show monster card or spell/trap card info input depending on player selection
         let cardTypeSelected = $('#ctype option:selected').val();
-        if (cardTypeSelected != "Spell" && cardTypeSelected != "Trap"){
+        if (cardTypeSelected != "Spell" && cardTypeSelected != "Trap") {
             stOnly.hide();
             monsterOnly.show();
-        } else{
+        } else {
             stOnly.show();
             monsterOnly.hide();
         }
@@ -49,73 +65,73 @@ $(document).ready(function(){
         $('.card-frame').attr('src', 'view/img/frame/' + cardTypeSelected + '.png');
         $('.card-frame-bottom').attr('src', 'view/img/frame/' + cardTypeSelected + '_Bottom.png');
         //Change the attribute
-        if (cardTypeSelected == "Spell"){
+        if (cardTypeSelected == "Spell") {
             cardAttribute.attr('src', 'view/img/attribute/SPELL.png');
-        } else if (cardTypeSelected == "Trap"){
+        } else if (cardTypeSelected == "Trap") {
             cardAttribute.attr('src', 'view/img/attribute/TRAP.png');
-        } else{
+        } else {
             cardAttribute.attr('src', 'view/img/attribute/' + $('#monster-attribute option:selected').val() + '.png');
         }
         //Change the monster type
         let monsterType = $('#monster-type').val();
-        if (cardTypeSelected == "Spell"){
+        if (cardTypeSelected == "Spell") {
             $('.card-type-1').html("Spell Card");
             $('.card-type-1').removeClass('white-text')
             $('.card-name-1').removeClass('white-text')
-        } else if (cardTypeSelected == "Trap"){
+        } else if (cardTypeSelected == "Trap") {
             $('.card-type-1').html("Trap Card");
             $('.card-type-1').removeClass('white-text')
             $('.card-name-1').removeClass('white-text')
-        } else{
+        } else {
             $('.card-type-1').html(monsterType);
             if (cardTypeSelected == 'Xyz') {
                 $('.card-type-1').addClass('white-text')
                 $('.card-name-1').addClass('white-text')
             } else {
-               $('.card-type-1').removeClass('white-text')
-               $('.card-name-1').removeClass('white-text')
+                $('.card-type-1').removeClass('white-text')
+                $('.card-name-1').removeClass('white-text')
             }
         }
         //Change the monster level
         let level = $('#level').val() > 12 ? 12 : ($('#level').val() < 1 ? 1 : $('#level').val());
         $('.card-level').attr('src', 'view/img/stat/Level-' + level + '.png');
         //Change the atk/def
-        if (cardTypeSelected != "Spell" && cardTypeSelected != "Trap"){
+        if (cardTypeSelected != "Spell" && cardTypeSelected != "Trap") {
             $('.card-atk').html($('#atk').val() < 0 ? 0 : $('#atk').val());
             $('.card-def').html($('#def').val() < 0 ? 0 : $('#def').val());
             $('.card-atk-rush').html($('#atk').val() < 0 ? 0 : $('#atk').val());
             $('.card-def-rush').html($('#def').val() < 0 ? 0 : $('#def').val());
-            if ($('#maximum').is(':checked')){
+            if ($('#maximum').is(':checked')) {
                 $('.card-max-atk').html($('#maximum-atk').val() < 0 ? 0 : $('#maximum-atk').val());
                 $('.card-max-atk-rush').html($('#maximum-atk').val() < 0 ? 0 : $('#maximum-atk').val());
             }
         }
         //Enable Maximum ATK input
-        if (cardTypeSelected != "Spell" && cardTypeSelected != "Trap" && $('#maximum').is(":checked")){
+        if (cardTypeSelected != "Spell" && cardTypeSelected != "Trap" && $('#maximum').is(":checked")) {
             $('#maximum-atk').removeAttr('disabled');
             $('.maximum-only').show();
-        } else{
+        } else {
             $('#maximum-atk').attr('disabled', 'disabled');
             $('.maximum-only').hide();
         }
         //Change rarities
         let rarity = $('#rarity option:selected').val();
-        if (rarity == "common"){
+        if (rarity == "common") {
             $('.card-name-1').removeClass('rarity-rush');
             $('.card-atk').removeClass('rarity-rush');
             $('.card-def').removeClass('rarity-rush');
             $('.card-max-atk').removeClass('rarity-rush');
-        } else{
-            if (!$('.card-name-1').hasClass('rarity-rush')){
+        } else {
+            if (!$('.card-name-1').hasClass('rarity-rush')) {
                 $('.card-name-1').addClass('rarity-rush');
             }
-            if (!$('.card-atk').hasClass('rarity-rush')){
+            if (!$('.card-atk').hasClass('rarity-rush')) {
                 $('.card-atk').addClass('rarity-rush');
             }
-            if (!$('.card-def').hasClass('rarity-rush')){
+            if (!$('.card-def').hasClass('rarity-rush')) {
                 $('.card-def').addClass('rarity-rush');
             }
-            if (!$('.card-max-atk').hasClass('rarity-rush')){
+            if (!$('.card-max-atk').hasClass('rarity-rush')) {
                 $('.card-max-atk').addClass('rarity-rush');
             }
         }
@@ -126,11 +142,11 @@ $(document).ready(function(){
         //Change card set number
         $('.card-set-number').html($('#set-number').val());
 
-        if (cardTypeSelected == 'Spell' || cardTypeSelected == 'Trap'){
+        if (cardTypeSelected == 'Spell' || cardTypeSelected == 'Trap') {
             if ($('#st-type option:selected').val() != 'Normal') {
-                if (cardTypeSelected == 'Spell'){
+                if (cardTypeSelected == 'Spell') {
                     $('.card-type-1').addClass('p40');
-                } else{
+                } else {
                     $('.card-type-1').addClass('p50');
                 }
                 $('.card-st-type').show();
@@ -145,124 +161,132 @@ $(document).ready(function(){
                     $('.card-st-type').removeClass('left-28');
                     $('.card-st-type').removeClass('left-27');
                 }
-            } else{
+            } else {
                 $('.card-st-type').hide();
                 $('.card-type-1').removeClass('p40');
                 $('.card-type-1').removeClass('p50');
             }
-        } else{
+        } else {
             $('.card-st-type').hide();
             $('.card-type-1').removeClass('p40');
             $('.card-type-1').removeClass('p50');
         }
-        if (cardTypeSelected == 'Normal'){
+        if (cardTypeSelected == 'Normal') {
             $('.lore').css('font-family', 'CardLore');
-        } else{
+        } else {
             $('.lore').css('font-family', 'CardEffect');
         }
     });
     //Change card image
-    $('#image-url').change(function(){
+    $('#image-url').change(function () {
         $(".card-image").attr("src", $("#image-url").val());
     });
-    $('.trumbowyg-editor').keyup(function(){
+    $('.trumbowyg-editor').keyup(function () {
         //Change card text
         $('.lore').html($('.trumbowyg-editor').html());
         resizeToFit($('.lore'), $('.card-lore'));
     });
-    $('.trumbowyg-editor').focusout(function(){
+    $('.trumbowyg-editor').focusout(function () {
         //Change card text
         $('.lore').html($('.trumbowyg-editor').html());
         resizeToFit($('.lore'), $('.card-lore'));
     });
     //Show or hide the overlay image input
-    $('#overlay').change(function(){
-        if ($('#overlay').is(":checked")){
+    $('#overlay').change(function () {
+        if ($('#overlay').is(":checked")) {
             $(".overlay-only").show();
-        } else{
+        } else {
             $(".overlay-only").hide();
         }
     });
     //Show or hide the LEGEND icon
-    $('#legend').change(function(){
-        if ($('#legend').is(":checked")){
+    $('#legend').change(function () {
+        if ($('#legend').is(":checked")) {
             legend.show();
-        } else{
+        } else {
             legend.hide();
         }
     });
     $('#upload-img').on('change', function () {
-    	var form = new FormData();
-    	form.append("image", $('#upload-img').prop('files')[0])
-    	var settings = {
-    	  "url": "https://api.imgbb.com/1/upload?key=aa6363fd0b78e5b38d451e3e648e97d6",
-    	  "method": "POST",
-    	  "timeout": 0,
-    	  "processData": false,
-    	  "mimeType": "multipart/form-data",
-    	  "contentType": false,
-    	  "data": form
-    	};
+        var form = new FormData();
+        form.append("image", $('#upload-img').prop('files')[0])
+        var settings = {
+            "url": "https://api.imgbb.com/1/upload?key=aa6363fd0b78e5b38d451e3e648e97d6",
+            "method": "POST",
+            "timeout": 0,
+            "processData": false,
+            "mimeType": "multipart/form-data",
+            "contentType": false,
+            "data": form
+        };
 
-    	$.ajax(settings).done(function (response) {
-      	var jx = JSON.parse(response);
-      	$("#image-url").val(jx.data.url);
-    	$(".card-image").attr("src", $("#image-url").val());
-      });
+        $.ajax(settings).done(function (response) {
+            var jx = JSON.parse(response);
+            $("#image-url").val(jx.data.url);
+            $(".card-image").attr("src", $("#image-url").val());
+        });
     });
-    $("#upload-btn").click(function(){
-    	$("#upload-img").click();
+    $("#upload-btn").click(function () {
+        $("#upload-img").click();
     });
     $('#upload-overlay-img').on('change', function () {
-    	var form = new FormData();
-    	form.append("image", $('#upload-overlay-img').prop('files')[0])
-    	var settings = {
-    	  "url": "https://api.imgbb.com/1/upload?key=aa6363fd0b78e5b38d451e3e648e97d6",
-    	  "method": "POST",
-    	  "timeout": 0,
-    	  "processData": false,
-    	  "mimeType": "multipart/form-data",
-    	  "contentType": false,
-    	  "data": form
-    	};
+        var form = new FormData();
+        form.append("image", $('#upload-overlay-img').prop('files')[0])
+        var settings = {
+            "url": "https://api.imgbb.com/1/upload?key=aa6363fd0b78e5b38d451e3e648e97d6",
+            "method": "POST",
+            "timeout": 0,
+            "processData": false,
+            "mimeType": "multipart/form-data",
+            "contentType": false,
+            "data": form
+        };
 
-    	$.ajax(settings).done(function (response) {
-      	var jx = JSON.parse(response);
-      	$("#image-overlay-url").val(jx.data.url);
-    	$(".card-image-overlay").attr("src", $("#image-overlay-url").val());
-      });
+        $.ajax(settings).done(function (response) {
+            var jx = JSON.parse(response);
+            $("#image-overlay-url").val(jx.data.url);
+            $(".card-image-overlay").attr("src", $("#image-overlay-url").val());
+        });
     });
-    $("#upload-overlay-btn").click(function(){
-    	$("#upload-overlay-img").click();
+    $("#upload-overlay-btn").click(function () {
+        $("#upload-overlay-img").click();
     });
-    $("#upload-file-btn").click(function(){
-    	$("#upload-file").click();
+    $("#upload-file-btn").click(function () {
+        $("#upload-file").click();
     });
-    $('#random-generate').click(function(){
-        var result           = '';
-        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    $('#random-generate').click(function () {
+        var result = '';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         var charactersLength = characters.length;
-        for ( var i = 0; i < 4; i++ ) {
+        for (var i = 0; i < 4; i++) {
             result += characters.charAt(Math.floor(Math.random() * charactersLength));
         }
         result += "-";
-        for ( var i = 0; i < 5; i++ ) {
+        for (var i = 0; i < 5; i++) {
             result += characters.charAt(Math.floor(Math.random() * charactersLength));
         }
         $('#set-number').val(result);
         //Change card set number
         $('.card-set-number').html(result);
     });
-    $('#save').click(function(){
-        let div = $('#display-card')[0];
-        html2canvas(div, {allowTaint:true, useCORS:true}).then(
-        function (canvas) {
-            $('#canvas').html(canvas);
-            saveAs(canvas.toDataURL(), $('#card-name').val() + '.png');
-        })
+    $('#save').click(async function () {
+        await waitForFonts();
+        await waitForImages();
+        await settleLayout();
+
+        const div = $('#display-card')[0];
+        const canvas = await html2canvas(div, {
+            allowTaint: true,
+            useCORS: true,
+            scale: 1,            // 1:1 = rendu prévisible (évite les micro-décalages liés au DPR)
+            backgroundColor: null
+        });
+        $('#canvas').html(canvas);
+        saveAs(canvas.toDataURL(), $('#card-name').val() + '.png');
     });
 
-    function saveAs(uri, filename){
+
+    function saveAs(uri, filename) {
         var link = document.createElement('a');
         if (typeof link.download === 'string') {
             link.href = uri;
@@ -275,7 +299,7 @@ $(document).ready(function(){
         }
     }
 
-    function squeezeToFit(text, div){
+     function squeezeToFit(text, div){
         var larger = text.width() > div.width();
         if (larger){
             scale = div.width() / text.width();
@@ -296,5 +320,4 @@ $(document).ready(function(){
             text.css('font-size', '100%');
         }
     }
-
 });
