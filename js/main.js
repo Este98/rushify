@@ -257,7 +257,7 @@ $(document).ready(function(){
         html2canvas(div, {allowTaint:true, useCORS:true}).then(
         function (canvas) {
             $('#canvas').html(canvas);
-            saveAs(canvas.toDataURL(), $('#set-number').val() + '.png');
+            saveAs(canvas.toDataURL(), $('#card-name').val() + '.png');
         })
     });
 
